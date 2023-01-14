@@ -1,0 +1,23 @@
+[user]
+        name = {{ .git.name }}
+        email = {{ .git.personal.email }}
+
+[commit]
+        verbose = true
+
+[init]
+	defaultBranch = main
+
+[push]
+        default = simple
+        autoSetupRemote = true
+
+[pull]
+        rebase = merges
+
+[diff]
+        tool = meld
+        ff = false
+
+[mergetool]
+        prompt = false
