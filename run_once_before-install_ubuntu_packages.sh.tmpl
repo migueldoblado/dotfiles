@@ -1,0 +1,33 @@
+#!//bin/bash
+# Packages hash: {{ include "ubuntu/snaps.txt" | sha256sum }}
+# Packages hash: {{ include "ubuntu/snaps-classic.txt" | sha256sum }}
+
+OS="{{ .chezmoi.os }}"
+DISTRO="{{ .chezmoi.osRelease.id }}"
+
+echo $OS
+echo $DISTRO
+
+if [[ $OS -ne "linux" && $DISTRO -ne 'ubuntu' ]]; then
+	exit 0
+fi;
+
+cd "{{ .chezmoi.workingTree }}"
+
+SNAPS=$(cat ubuntu/snaps.txt)
+SNAPS_CLASSIC=$(cat ubuntu/snaps-classic.txt)
+
+echo $SNAPS;
+echo "Installing snaps:"
+
+for current_snap in $SNAPS; 
+do 
+echo sudo snap install $current_snap;
+sudo snap install $current_snap; 
+done
+
+for current_snap in $SNAPS_CLASSIC;
+do
+echo sudo snap install $current_snap --classic;
+sudo snap install $current_snap --classic;
+done
