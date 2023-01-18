@@ -1,6 +1,7 @@
 #!//bin/bash
 # Packages hash: {{ include "ubuntu/snaps.txt" | sha256sum }}
 # Packages hash: {{ include "ubuntu/snaps-classic.txt" | sha256sum }}
+# Packages hash: {{ include "ubuntu/apt.txt" | sha256sum }}
 
 OS="{{ .chezmoi.os }}"
 DISTRO="{{ .chezmoi.osRelease.id }}"
@@ -16,18 +17,20 @@ cd "{{ .chezmoi.workingTree }}"
 
 SNAPS=$(cat ubuntu/snaps.txt)
 SNAPS_CLASSIC=$(cat ubuntu/snaps-classic.txt)
+APT_PACKAGES=$(cat ubuntu/apt.txt)
 
-echo $SNAPS;
-echo "Installing snaps:"
-
-for current_snap in $SNAPS; 
+echo "Installing apt packages"
+for apt_package in $APT_PACKAGES;
 do 
-echo sudo snap install $current_snap;
-sudo snap install $current_snap; 
+sudo apt install $apt_package; 
 done
 
+echo "Installing snaps:"
+for current_snap in $SNAPS; 
+do 
+sudo snap install $current_snap; 
+done
 for current_snap in $SNAPS_CLASSIC;
 do
-echo sudo snap install $current_snap --classic;
 sudo snap install $current_snap --classic;
 done
