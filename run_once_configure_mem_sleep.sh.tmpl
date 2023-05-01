@@ -1,0 +1,26 @@
+#!/bin/sh
+
+# My ubuntu laptop had problem with the s2idle suspend mode, which did not really suspended and consumed the battery quickly.
+
+if [ "$(hostname)" = "mdp-laptop" ]; then
+  echo "Running script on Asus laptop..."
+  # Create a systemd service file
+  cat <<EOF | sudo tee /etc/systemd/system/mem_sleep_deep.service
+[Unit]
+Description=Set mem_sleep to deep for assus laptop
+
+[Service]
+Type=oneshot
+ExecStart=/bin/sh -c 'sudo chmod 777 /sys/power/mem_sleep && sudo echo deep > /sys/power/mem_sleep && sudo chmod 444 /sys/power/mem_sleep'
+
+[Install]
+WantedBy=sysinit.target
+EOF
+
+  # Enable and start the systemd service
+  sudo systemctl enable mem_sleep_deep.service
+  sudo systemctl start mem_sleep_deep.service
+  echo "Suspend mode changed to deep"
+else
+  echo "Not an Asus laptop. Skipping script."
+fi
