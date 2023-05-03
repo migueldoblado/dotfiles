@@ -1,0 +1,5 @@
+firefox_firefox.desktop
+google-chrome.desktop
+code.desktop
+org.gnome.Terminal.desktop
+zoom-client_zoom-client.desktop

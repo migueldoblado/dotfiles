@@ -2,6 +2,7 @@
 # Packages hash: {{ include "ubuntu/snaps.txt" | sha256sum }}
 # Packages hash: {{ include "ubuntu/snaps-classic.txt" | sha256sum }}
 # Packages hash: {{ include "ubuntu/apt.txt" | sha256sum }}
+# Packages hash: {{ include "ubuntu/favorite-apps.txt" | sha256sum }}
 
 OS="{{ .chezmoi.os }}"
 DISTRO="{{ .chezmoi.osRelease.id }}"
@@ -34,3 +35,9 @@ for current_snap in $SNAPS_CLASSIC;
 do
 sudo snap install $current_snap --classic;
 done
+
+# Pin some applications in the Dash
+FAVORITE_APP=$(cat ubuntu/favorite-apps.txt | xargs -I {} echo -n "'{}', " | sed 's/, $//')
+
+#gsettings set org.gnome.shell favorite-apps "['firefox_firefox.desktop', 'google-chrome.desktop', 'code.desktop', 'org.gnome.Terminal.desktop', 'zoom-client_zoom-client.desktop']"
+gsettings set org.gnome.shell favorite-apps "[$FAVORITE_APP]"
