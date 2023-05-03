@@ -10,5 +10,7 @@ if ! lpass status; then
   exit 1
 fi
 
-lpass show --notes "github_personal_public" > "$HOME/.ssh/github_personal_test.pub"
-lpass show --notes "github_personal_private" > "$HOME/.ssh/github_personal_test"
+lpass show --notes "github_personal_public" > "$HOME/.ssh/github_personal.pub"
+lpass show --notes "github_personal_private" > "$HOME/.ssh/github_personal"
+
+ssh-add "$HOME/.ssh/github_personal"
