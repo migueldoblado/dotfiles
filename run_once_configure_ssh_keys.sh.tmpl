@@ -1,0 +1,14 @@
+#!/bin/sh
+
+# Check if logged in to LastPass
+if ! lpass status; then
+  lpass login  {{ .git.personal.email }}
+fi
+
+if ! lpass status; then
+  echo "Revise you lpass login"
+  exit 1
+fi
+
+lpass show --notes "github_personal_public" > "$HOME/.ssh/github_personal_test.pub"
+lpass show --notes "github_personal_private" > "$HOME/.ssh/github_personal_test"
