@@ -1,0 +1,16 @@
+#!/bin/bash
+
+OS="{{ .chezmoi.os }}"
+DISTRO="{{ .chezmoi.osRelease.id }}"
+
+if [[ $OS -ne "linux" && $DISTRO -ne 'ubuntu' ]]; then
+	exit 0
+fi;
+
+if [[ ! -d $HOME/.dropbox-dist ]]; then
+  echo "Installing dropbox"
+  cd ~ && wget -O - "https://www.dropbox.com/download?plat=lnx.x86_64" | tar xzf - 
+  ~/.dropbox-dist/dropboxd
+else
+  echo "Dropbox already installed"
+fi
