@@ -6,8 +6,7 @@ function install_prezto() {
   echo "Intalling/Updating prezto if needed"
 
   # Install Prezo if it isn't already present
-#  if [[ ! -d $HOME/.zprezto/ ]]; then
-  if true ; then
+  if [[ ! -d $HOME/.zprezto/ ]]; then
     git clone --recursive https://github.com/sorin-ionescu/prezto.git "${ZDOTDIR:-$HOME}/.zprezto"
 
     # TODO The following commands fail under this bash script, but they work if you run them manually on terminal
