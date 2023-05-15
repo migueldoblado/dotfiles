@@ -1,5 +1,6 @@
 #!/bin/zsh
 
+# This shell code is zsh, it fails run as bash
 
 # https://github.com/sorin-ionescu/prezto
 function install_prezto() {
@@ -9,11 +10,14 @@ function install_prezto() {
   if [[ ! -d $HOME/.zprezto/ ]]; then
     git clone --recursive https://github.com/sorin-ionescu/prezto.git "${ZDOTDIR:-$HOME}/.zprezto"
 
-    # TODO The following commands fail under this bash script, but they work if you run them manually on terminal
     setopt EXTENDED_GLOB
 
-    # The following command fails on Linux, command substitution: syntax error near unexpected token '.N'
-    for rcfile in "${ZDOTDIR:-$HOME}"/.zprezto/runcoms/^README.md(.N); do
+    # Skip readme and files which need further modification
+    # zshrc: need custom configuration. The workaround is to add 'source "${ZDOTDIR:-$HOME}/.zprezto/init.zsh"'
+    # at the beggining of the file
+    # zpreztorc: we need to add the desired module in line -> zstyle ':prezto:module:prompt' theme 'powerlevel10k'
+    # this module requires to load the p10k configuration from zshrc with -> [[ ! -f ~/.p10k.zsh ]] || source ~/.p10k.zsh 
+    for rcfile in "${ZDOTDIR:-$HOME}"/.zprezto/runcoms/^(README.md|zshrc|zpreztorc)(.N); do
       ln -s "$rcfile" "${ZDOTDIR:-$HOME}/.${rcfile:t}"
     done
 
@@ -21,10 +25,17 @@ function install_prezto() {
     git clone https://github.com/bhilburn/powerlevel9k.git  ~/.zprezto/modules/prompt/external/powerlevel9k
 
     # If we want to uninstall it, just remove the ~/.zprezto folder
+
+
   else
     echo "Prezto already installed"
     cd $HOME/.zprezto/
     git pull && git submodule update --init --recursive
+
+    # TODO Include the repo using chezmoi utils https://www.chezmoi.io/user-guide/include-files-from-elsewhere/
+    CHEZMOI_DIR=$(chezmoi source-path)
+    echo $CHEZMOI_DIR
+    $CHEZMOI_DIR/iterm/powerline/fonts/install.sh
   fi
 }
 
