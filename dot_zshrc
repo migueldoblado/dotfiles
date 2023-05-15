@@ -5,6 +5,12 @@ if [[ -s "${ZDOTDIR:-$HOME}/.zprezto/init.zsh" ]]; then
   source "${ZDOTDIR:-$HOME}/.zprezto/init.zsh"
 fi
 
+# Configure terminal tab titles based on current directory
+precmd () {
+  window_title="\e]0;${${PWD/#"$HOME"/~}/workspace/w}\a"
+  echo -ne "$window_title"
+}
+
 # Set up the prompt
 
 autoload -Uz promptinit
