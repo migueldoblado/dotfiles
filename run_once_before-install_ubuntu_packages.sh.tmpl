@@ -37,6 +37,7 @@ sudo snap install $current_snap --classic;
 done
 
 # Pin some applications in the Dash
+# use `ls /usr/share/applications /var/lib/snapd/desktop/applications | grep -i <package>` to find the application launcher name
 FAVORITE_APP=$(cat ubuntu/favorite-apps.txt | xargs -I {} echo -n "'{}', " | sed 's/, $//')
 
 #gsettings set org.gnome.shell favorite-apps "['firefox_firefox.desktop', 'google-chrome.desktop', 'code.desktop', 'org.gnome.Terminal.desktop', 'zoom-client_zoom-client.desktop']"

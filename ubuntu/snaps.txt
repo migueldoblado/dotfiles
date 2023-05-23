@@ -1,2 +1,3 @@
 gimp
+todoist
 zoom-client
