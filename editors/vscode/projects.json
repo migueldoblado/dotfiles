@@ -1,0 +1,16 @@
+[
+	{
+		"name": "Chezmoi Dotfiles",
+		"rootPath": "~/.local/share/chezmoi",
+		"paths": [],
+		"tags": [],
+		"enabled": true
+	},
+	{
+		"name": "Mozilla readability",
+		"rootPath": "~/Projects/readability",
+		"paths": [],
+		"tags": [],
+		"enabled": true
+	}
+]

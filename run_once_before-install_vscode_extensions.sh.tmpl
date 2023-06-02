@@ -1,0 +1,16 @@
+#!//bin/bash
+# Packages hash: {{ include "editors/vscode/extensions.txt" | sha256sum }}
+# Packages hash: {{ include "editors/vscode/projects.json" | sha256sum }}
+
+
+EXTENSIONS=$(cat editors/vscode/extensions.txt)
+
+echo "Installing vscode extensions"
+for extension in $EXTENSIONS;
+do 
+code --install-extension $extension
+done
+
+echo "Setting vscode projects"
+
+cp "$(chezmoi source-path)/editors/vscode/projects.json" $HOME"/.config/Code/User/globalStorage/alefragnani.project-manager/"
