@@ -1,6 +1,6 @@
 firefox_firefox.desktop
 google-chrome.desktop
-code.desktop
+code_code.desktop
 org.gnome.Terminal.desktop
 zoom-client_zoom-client.desktop
 todoist_todoist.desktop
