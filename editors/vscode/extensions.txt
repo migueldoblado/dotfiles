@@ -1,6 +1,7 @@
 alefragnani.project-manager
 DavidAnson.vscode-markdownlint
 dbaeumer.vscode-eslint
+dzuelu.package-versions-npm
 eamodio.gitlens
 exiasr.hadolint
 foxundermoon.shell-format
