@@ -1,3 +1,4 @@
+discord
 gimp
 todoist
 zoom-client

@@ -3,4 +3,5 @@ google-chrome.desktop
 code_code.desktop
 org.gnome.Terminal.desktop
 zoom-client_zoom-client.desktop
+discord_discord.desktop
 todoist_todoist.desktop
