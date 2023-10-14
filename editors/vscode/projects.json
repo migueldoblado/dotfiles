@@ -12,5 +12,19 @@
         "paths": [],
         "tags": [],
         "enabled": true
+    },
+    {
+        "name": "jsdom",
+        "rootPath": "~/Projects/jsdom",
+        "paths": [],
+        "tags": [],
+        "enabled": true
+    },
+    {
+        "name": "linkedom",
+        "rootPath": "~/Projects/readability",
+        "paths": [],
+        "tags": [],
+        "enabled": true
     }
 ]
