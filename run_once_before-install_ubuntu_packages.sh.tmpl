@@ -20,7 +20,12 @@ SNAPS=$(cat ubuntu/snaps.txt)
 SNAPS_CLASSIC=$(cat ubuntu/snaps-classic.txt)
 APT_PACKAGES=$(cat ubuntu/apt.txt)
 
+echo "Adding external repositories"
+sudo add-apt-repository ppa:libreoffice/ppa
+
+
 echo "Installing apt packages"
+sudo apt update
 for apt_package in $APT_PACKAGES;
 do 
 sudo apt install $apt_package; 
