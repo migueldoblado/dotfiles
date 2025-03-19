@@ -1,3 +1,4 @@
+direnv
 htop
 lastpass-cli
 libreoffice
