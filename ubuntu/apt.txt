@@ -17,3 +17,17 @@ libxml2-dev
 libxmlsec1-dev
 libffi-dev
 liblzma-dev
+cargo
+cmake
+docker-ce
+docker-compose-plugin
+docker-buildx-plugin
+containerd.io
+ffmpeg
+fish
+google-chrome-stable
+imagemagick
+nmap
+nodejs
+vlc
+zsh

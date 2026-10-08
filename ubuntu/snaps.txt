@@ -3,3 +3,6 @@ gimp
 slack
 todoist
 zoom-client
+firefox
+thunderbird
+obsidian
