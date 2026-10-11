@@ -1,5 +1,7 @@
 direnv
+git
 gh
+pass
 htop
 lastpass-cli
 libreoffice

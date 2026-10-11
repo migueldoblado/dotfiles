@@ -54,9 +54,9 @@ zstyle ':completion:*:kill:*' command 'ps -u $USER -o pid,%cpu,tty,cputime,cmd'
 
 export PATH=.:~/bin:~/.local/bin:$PATH
 
-# Hetzner Cloud API token (sourced from personal-secrets)
-if [ -f ~/.config/personal-secrets/hetzner/token ]; then
-  export HCLOUD_TOKEN=$(cat ~/.config/personal-secrets/hetzner/token)
+# Hetzner Cloud API token (sourced from personal-secrets pass store)
+if [ -f ~/.config/personal-secrets/.gpg-id ]; then
+  export HCLOUD_TOKEN=$(PASSWORD_STORE_DIR=$HOME/.config/personal-secrets pass show hetzner/token 2>/dev/null)
 fi
 
 export PYENV_ROOT="$HOME/.pyenv"
