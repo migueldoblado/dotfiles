@@ -1,5 +1,6 @@
 discord
 gimp
+hcloud
 slack
 todoist
 zoom-client
